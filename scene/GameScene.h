@@ -11,6 +11,8 @@
 #include "Player.h"
 #include <memory>
 #include "DebugCamera.h"
+#include "Skydome.h"
+#include "Ground.h"
 
 /// <summary>
 /// ゲームシーン
@@ -55,7 +57,9 @@ private: // メンバ変数
 	ViewProjection viewProjection_;
 
 	//デバッグカメラ
-	//DebugCamera* debugCamera_ = nullptr;
+	DebugCamera* debugCamera_ = nullptr;
+	// デバッグカメラ
+	bool isDebugCameraActive_ = false;
 
 	//プレイヤーのテクスチャ
 	uint32_t TextureHandle_ = 0;
@@ -68,6 +72,16 @@ private: // メンバ変数
 
 	//Player* player_ = nullptr;
 	std::unique_ptr<Player> player_;
+
+	//天球
+	std::unique_ptr<Skydome> skydome_;
+
+	std::unique_ptr<Model> skydomeModel_;
+
+	//グラウンド
+	std::unique_ptr<Ground> ground_;
+
+	std::unique_ptr<Model> groundModel_;
 
 
 	/// <summary>

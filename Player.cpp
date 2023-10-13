@@ -6,10 +6,10 @@
 
 Player::~Player() 
 {
-	for (PlayerBullet* bullet : playerBullets_) 
-	{
-		delete playerBullet_;
-	}
+	//for (PlayerBullet* bullet : playerBullets_) 
+	//{
+	//	delete playerBullet_;
+	//}
 }
 
 void Player::Initialize(Model* model, uint32_t textureHandle) 
@@ -23,19 +23,20 @@ void Player::Initialize(Model* model, uint32_t textureHandle)
 
 	worldTransform_.Initialize();
 
+	worldTransform_.translation_ = {0.0f, 2.0f, 0.0f};
 
 }
 
 void Player::Update()
 {
 	//デスフラグの立った弾を削除
-	playerBullets_.remove_if([](PlayerBullet* bullet) {
+	/* playerBullets_.remove_if([](PlayerBullet* bullet) {
 		if (bullet->IsDead()) {
 			delete bullet;
 			return true;
 		}
 		return false;
-	});
+	});*/
 
 
 	Vector3 move = {0, 0, 0};
@@ -137,8 +138,7 @@ void Player::Draw(ViewProjection& viewProjection)
 }
 
 
-void Player::Attack(Vector3& position) 
-{ 
+/* void Player::Attack(Vector3& position) { 
 	if (input_->TriggerKey(DIK_SPACE))
 	{
 		
@@ -157,4 +157,4 @@ void Player::Attack(Vector3& position)
 		playerBullets_.push_back(newBullet);
 	}
 
-}
+}*/
